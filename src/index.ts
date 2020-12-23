@@ -2,7 +2,7 @@
  * @file Utilities for writing JavaScript code that runs in KoLmafia.
  */
 
-import {getRevision} from 'kolmafia';
+import {getRevision, getVersion} from 'kolmafia';
 
 /**
  * Represents an exception thrown when the current KoLmafia version does not
@@ -47,6 +47,58 @@ export function sinceKolmafiaRevision(revision: number): void {
   if (getRevision() < revision) {
     throw new KolmafiaVersionError(
       `${getScriptName()} requires revision r${revision} of kolmafia or higher (current: ${getRevision()}). Up-to-date builds can be found at https://ci.kolmafia.us/.`
+    );
+  }
+}
+
+/**
+ * If KoLmafia's version is less than `majorVersion.minorVersion`, throws an
+ * exception.
+ * Otherwise, does nothing.
+ *
+ * This behaves like the `since X.Y;` statement in ASH.
+ * @param majorVersion Major version number
+ * @param minorVersion Minor version number
+ * @throws {KolmafiaVersionError}
+ *    If KoLmafia's major version is less than `majorVersion`, or if the major
+ *    versions are equal but the minor version is less than `minorVersion`
+ * @throws {TypeError}
+ *    If either `majorVersion` or `minorVersion` are not integers
+ */
+export function sinceKolmafiaVersion(
+  majorVersion: number,
+  minorVersion: number
+): void {
+  if (!Number.isInteger(majorVersion)) {
+    throw new TypeError(
+      `Invalid major version number ${majorVersion} (must be an integer)`
+    );
+  }
+  if (!Number.isInteger(minorVersion)) {
+    throw new TypeError(
+      `Invalid minor version number ${minorVersion} (must be an integer)`
+    );
+  }
+
+  const versionStr = getVersion();
+  const versionStrMatch = /v(\d+)\.(\d+)/.exec(versionStr);
+  if (!versionStrMatch) {
+    // This is not something the user should handle
+    throw new Error(
+      `Unexpected KoLmafia version string: "${versionStr}". You may need to update the script.`
+    );
+  }
+
+  const currentMajorVersion = Number(versionStrMatch[1]);
+  const currentMinorVersion = Number(versionStrMatch[2]);
+
+  // Based on net.sourceforge.kolmafia.textui.Parser.sinceException()
+  if (
+    currentMajorVersion < majorVersion ||
+    (currentMajorVersion === majorVersion && currentMinorVersion < minorVersion)
+  ) {
+    throw new KolmafiaVersionError(
+      `${getScriptName()} requires version ${majorVersion}.${minorVersion} of kolmafia or higher (current: ${currentMajorVersion}.${currentMinorVersion}). Up-to-date builds can be found at https://ci.kolmafia.us/.`
     );
   }
 }
