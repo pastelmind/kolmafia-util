@@ -14,11 +14,11 @@ describe('sinceKolmafiaRevision()', () => {
   it('Must disallow versions greater than the current version', () => {
     expect(() => sinceKolmafiaRevision(30000)).toThrowError(
       KolmafiaVersionError,
-      /This script requires revision r30000.+20000/
+      /requires revision r30000.+20000/
     );
     expect(() => sinceKolmafiaRevision(20001)).toThrowError(
       KolmafiaVersionError,
-      /This script requires revision r20001.+20000/
+      /requires revision r20001.+20000/
     );
   });
 

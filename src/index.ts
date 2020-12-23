@@ -15,6 +15,18 @@ export class KolmafiaVersionError extends Error {
 }
 
 /**
+ * Returns the currently executing script name, suitable for embedding in an
+ * error message.
+ * @returns Path of the main script wrapped in single-quotes, or `"This script"`
+ *    if the path cannot be determined
+ */
+function getScriptName(): string {
+  // In Rhino, the current script name is available in require.main.id
+  const scriptName = require.main?.id;
+  return scriptName ? `'${scriptName}'` : 'This script';
+}
+
+/**
  * If KoLmafia's revision number is less than `revision`, throws an exception.
  * Otherwise, does nothing.
  *
@@ -34,7 +46,7 @@ export function sinceKolmafiaRevision(revision: number): void {
   // Based on net.sourceforge.kolmafia.textui.Parser.sinceException()
   if (getRevision() < revision) {
     throw new KolmafiaVersionError(
-      `This script requires revision r${revision} of kolmafia or higher (current: ${getRevision()}). Up-to-date builds can be found at https://ci.kolmafia.us/.`
+      `${getScriptName()} requires revision r${revision} of kolmafia or higher (current: ${getRevision()}). Up-to-date builds can be found at https://ci.kolmafia.us/.`
     );
   }
 }
