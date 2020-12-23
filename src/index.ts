@@ -20,6 +20,9 @@ export class KolmafiaVersionError extends Error {
   }
 }
 
+// Manually set class name, so that the stack trace shows proper name in Rhino
+KolmafiaVersionError.prototype.name = 'KolmafiaVersionError';
+
 /**
  * Returns the currently executing script name, suitable for embedding in an
  * error message.
