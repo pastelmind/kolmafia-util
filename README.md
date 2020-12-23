@@ -16,7 +16,7 @@ Support for `dependencies.txt` is coming soon.
 
 ## Usage and API
 
-If you are using a bundler, you can import and
+If you are using a bundler, you can import and use kolmafia-util like this:
 
 ```js
 import {sinceKolmafiaVersion} 'kolmafia-util';
