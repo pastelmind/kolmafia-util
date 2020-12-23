@@ -2,7 +2,7 @@
  * @file Utilities for writing JavaScript code that runs in KoLmafia.
  */
 
-import {getRevision, getVersion} from 'kolmafia';
+import {getRevision, getVersion, print} from 'kolmafia';
 
 /**
  * Represents an exception thrown when the current KoLmafia version does not
@@ -101,4 +101,12 @@ export function sinceKolmafiaVersion(
       `${getScriptName()} requires version ${majorVersion}.${minorVersion} of kolmafia or higher (current: ${currentMajorVersion}.${currentMinorVersion}). Up-to-date builds can be found at https://ci.kolmafia.us/.`
     );
   }
+}
+
+// Print stuff
+if (require.main === module) {
+  print(
+    `${getScriptName()} is a support script for other scripts. It is not meant to be called directly.`,
+    'red'
+  );
 }
