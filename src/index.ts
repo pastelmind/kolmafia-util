@@ -11,6 +11,12 @@ import {getRevision, getVersion, print} from 'kolmafia';
 export class KolmafiaVersionError extends Error {
   constructor(message?: string) {
     super(message);
+
+    // Explicitly set the prototype, so that 'instanceof' still works in Node.js
+    // even when the class is transpiled down to ES5
+    // See: https://github.com/Microsoft/TypeScript-wiki/blob/master/Breaking-Changes.md#extending-built-ins-like-error-array-and-map-may-no-longer-work
+    // Note that this code isn't needed for Rhino.
+    Object.setPrototypeOf(this, KolmafiaVersionError.prototype);
   }
 }
 
