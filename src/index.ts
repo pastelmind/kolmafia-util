@@ -111,11 +111,3 @@ export function sinceKolmafiaVersion(
     );
   }
 }
-
-// Print stuff
-if (require.main === module) {
-  print(
-    `${getScriptName()} is a support script for other scripts. It is not meant to be called directly.`,
-    'red'
-  );
-}

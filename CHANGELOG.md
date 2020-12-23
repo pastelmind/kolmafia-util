@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Remove warning message about "don't call this script directly". The warning was accidentally leaking into downstream scripts that bundled kolmafia-us using Rollup.
+
 ## [0.1.0] - 2020-12-24
 
 ### Added
