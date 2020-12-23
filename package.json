@@ -39,5 +39,10 @@
   },
   "dependencies": {
     "kolmafia": "^1.0.3"
-  }
+  },
+  "files": [
+    "build/src/**/*",
+    "build/esm/src/**/*.js",
+    "build/esm/src/**/*.js.map"
+  ]
 }
