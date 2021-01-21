@@ -2,7 +2,7 @@
  * @file Utilities for writing JavaScript code that runs in KoLmafia.
  */
 
-import {getRevision, getVersion, print} from 'kolmafia';
+import {getRevision, getVersion} from 'kolmafia';
 
 /**
  * Represents an exception thrown when the current KoLmafia version does not
