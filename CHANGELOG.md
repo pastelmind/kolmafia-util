@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Use kolmafia-types instead of kolmafia-js.
+  Also, this is now a dev-only dependency. (#2)
+
 ## [0.1.1] - 2020-12-24
 
 ### Fixed
