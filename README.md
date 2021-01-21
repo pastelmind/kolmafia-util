@@ -1,5 +1,7 @@
 # kolmafia-util
 
+[![Test & Lint status](https://github.com/pastelmind/kolmafia-util/workflows/Test%20&%20Lint/badge.svg)](https://github.com/pastelmind/kolmafia-util/actions?query=workflow%3A%22Test+%26+Lint%22)
+
 KoLmafia-util is a utility library for writing JavaScript/TypeScript programs that run inside KoLmafia.
 
 It provides some useful features in ASH that are not available in the JavaScript runtime.
