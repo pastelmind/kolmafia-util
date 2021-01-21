@@ -31,7 +31,6 @@
   "devDependencies": {
     "@types/jasmine": "^3.6.2",
     "@types/mock-require": "^2.0.0",
-    "@types/node": "^14.11.2",
     "gts": "^3.0.3",
     "jasmine": "^3.6.3",
     "kolmafia": "npm:kolmafia-types@0.0.3",
