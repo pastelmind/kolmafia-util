@@ -1,6 +1,6 @@
 # kolmafia-util
 
-[![Test & Lint status](https://github.com/pastelmind/kolmafia-util/workflows/Test%20&%20Lint/badge.svg)](https://github.com/pastelmind/kolmafia-util/actions?query=workflow%3A%22Test+%26+Lint%22)
+[![Test & Lint status](https://github.com/pastelmind/kolmafia-util/workflows/Test%20&%20Lint/badge.svg)](https://github.com/pastelmind/kolmafia-util/actions?query=workflow%3A%22Test+%26+Lint%22) [![npm](https://img.shields.io/npm/v/kolmafia-util)](https://www.npmjs.com/package/kolmafia-util)
 
 KoLmafia-util is a utility library for writing JavaScript/TypeScript programs that run inside KoLmafia.
 
