@@ -1,6 +1,6 @@
-import mock = require('mock-require');
+import {replace, reset} from 'testdouble';
 
-mock('kolmafia', {
+replace('kolmafia', {
   getRevision: () => 20000,
   getVersion: () => 'KoLmafia v15.3',
 });
@@ -10,6 +10,10 @@ import {
   sinceKolmafiaRevision,
   sinceKolmafiaVersion,
 } from '../src';
+
+afterEach(() => {
+  reset();
+});
 
 describe('sinceKolmafiaRevision()', () => {
   it('Must allow valid versions', () => {

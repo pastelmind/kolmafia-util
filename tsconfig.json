@@ -3,10 +3,7 @@
   "compilerOptions": {
     "target": "ES5",
     "rootDir": ".",
-    "outDir": "build",
-    // Necessary because @types/mock-require imports @types/node, whose types
-    // conflict with kolmafia-types
-    "skipLibCheck": true
+    "outDir": "build"
   },
   "include": ["src/**/*.ts", "spec/**/*.ts"],
   "references": [{"path": "tsconfig.esm.json"}]
