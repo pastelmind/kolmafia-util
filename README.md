@@ -21,14 +21,14 @@ Support for `dependencies.txt` is coming soon.
 If you are using a bundler, you can import and use kolmafia-util like this:
 
 ```js
-import {sinceKolmafiaVersion} 'kolmafia-util';
+import {sinceKolmafiaVersion} from 'kolmafia-util';
 
 sinceKolmafiaVersion(20, 7);
 ```
 
 The following is a list of functions and classes exported by kolmafia-util.
 
-### sinceKolmafiaRevision
+### `sinceKolmafiaRevision()`
 
 ```ts
 function sinceKolmafiaRevision(revision: number): void;
@@ -47,7 +47,7 @@ import {sinceKolmafiaRevsion} from 'kolmafia-util';
 sinceKolmafiaRevsion(20505);
 ```
 
-### sinceKolmafiaVersion
+### `sinceKolmafiaVersion()`
 
 ```ts
 function sinceKolmafiaVersion(majorVersion: number, minorVersion: number): void;
@@ -66,6 +66,18 @@ import {sinceKolmafiaVersion} from 'kolmafia-util';
 sinceKolmafiaVersion(20, 7);
 ```
 
-### KolmafiaVersionError
+### `KolmafiaVersionError`
 
-A custom error class used by `sinceKolmafiaRevision()` and `sinceKolmafiaVersion()`.
+A custom error class used by `sinceKolmafiaRevision()` and `sinceKolmafiaVersion()`. You can use it with `instanceof` to manually handle version errors:
+
+```ts
+import { KolmafiaVersionError, sinceKolmafiaVersion } from 'kolmafia-util';
+
+try {
+  sinceKolmafiaVersion(20, 7);
+} catch (err) {
+  if (err instanceof KolmafiaVersionError) {
+    // Your own code
+  }
+}
+```
