@@ -1,29 +1,36 @@
 import {expect} from 'chai';
-import {replace, reset} from 'testdouble';
+import {replace, replaceEsm, reset} from 'testdouble';
 
 replace('kolmafia', {
   getRevision: () => 20000,
   getVersion: () => 'KoLmafia v15.3',
 });
 
-import {
-  KolmafiaVersionError,
-  sinceKolmafiaRevision,
-  sinceKolmafiaVersion,
-} from '../src';
+before(async () => {
+  await replaceEsm('kolmafia', {
+    getRevision: () => 20000,
+    getVersion: () => 'KoLmafia v15.3',
+  });
+});
 
 afterEach(() => {
   reset();
 });
 
 describe('sinceKolmafiaRevision()', () => {
-  it('Must allow valid versions', () => {
+  it('Must allow valid versions', async () => {
+    const {sinceKolmafiaRevision} = await import('../src/index.js');
+
     sinceKolmafiaRevision(20000);
     sinceKolmafiaRevision(19999);
     sinceKolmafiaRevision(0);
   });
 
-  it('Must disallow versions greater than the current version', () => {
+  it('Must disallow versions greater than the current version', async () => {
+    const {KolmafiaVersionError, sinceKolmafiaRevision} = await import(
+      '../src/index.js'
+    );
+
     expect(() => sinceKolmafiaRevision(30000)).to.throw(
       KolmafiaVersionError,
       /requires revision r30000.+20000/
@@ -34,7 +41,9 @@ describe('sinceKolmafiaRevision()', () => {
     );
   });
 
-  it('Must disallow non-integers', () => {
+  it('Must disallow non-integers', async () => {
+    const {sinceKolmafiaRevision} = await import('../src/index.js');
+
     // Only integers are allowed
     expect(() => sinceKolmafiaRevision(20000.1)).to.throw(TypeError);
     // @ts-expect-error Only numbers are allowed
@@ -51,13 +60,19 @@ describe('sinceKolmafiaRevision()', () => {
 });
 
 describe('sinceKolmafiaVersion()', () => {
-  it('Must allow valid versions', () => {
+  it('Must allow valid versions', async () => {
+    const {sinceKolmafiaVersion} = await import('../src/index.js');
+
     sinceKolmafiaVersion(15, 3);
     sinceKolmafiaVersion(15, 2);
     sinceKolmafiaVersion(14, 9);
   });
 
-  it('Must disallow versions greater than the current version', () => {
+  it('Must disallow versions greater than the current version', async () => {
+    const {KolmafiaVersionError, sinceKolmafiaVersion} = await import(
+      '../src/index.js'
+    );
+
     expect(() => sinceKolmafiaVersion(15, 4)).to.throw(
       KolmafiaVersionError,
       /requires version 15\.4.+15\.3/
@@ -68,7 +83,9 @@ describe('sinceKolmafiaVersion()', () => {
     );
   });
 
-  it('Must disallow non-integers', () => {
+  it('Must disallow non-integers', async () => {
+    const {sinceKolmafiaVersion} = await import('../src/index.js');
+
     // Only integers are allowed
     expect(() => sinceKolmafiaVersion(15.1, 0)).to.throw(TypeError);
     expect(() => sinceKolmafiaVersion(0, 15.1)).to.throw(TypeError);

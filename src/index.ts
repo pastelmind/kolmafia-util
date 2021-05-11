@@ -2,7 +2,10 @@
  * @file Utilities for writing JavaScript code that runs in KoLmafia.
  */
 
-import {getRevision, getVersion} from 'kolmafia';
+import * as kolmafia from 'kolmafia';
+
+// Ugly, but necessary to make mocking work
+const {getVersion, getRevision} = kolmafia;
 
 /**
  * Represents an exception thrown when the current KoLmafia version does not
