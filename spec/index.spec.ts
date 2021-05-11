@@ -1,3 +1,4 @@
+import {expect} from 'chai';
 import {replace, reset} from 'testdouble';
 
 replace('kolmafia', {
@@ -23,11 +24,11 @@ describe('sinceKolmafiaRevision()', () => {
   });
 
   it('Must disallow versions greater than the current version', () => {
-    expect(() => sinceKolmafiaRevision(30000)).toThrowError(
+    expect(() => sinceKolmafiaRevision(30000)).to.throw(
       KolmafiaVersionError,
       /requires revision r30000.+20000/
     );
-    expect(() => sinceKolmafiaRevision(20001)).toThrowError(
+    expect(() => sinceKolmafiaRevision(20001)).to.throw(
       KolmafiaVersionError,
       /requires revision r20001.+20000/
     );
@@ -35,17 +36,17 @@ describe('sinceKolmafiaRevision()', () => {
 
   it('Must disallow non-integers', () => {
     // Only integers are allowed
-    expect(() => sinceKolmafiaRevision(20000.1)).toThrowError(TypeError);
+    expect(() => sinceKolmafiaRevision(20000.1)).to.throw(TypeError);
     // @ts-expect-error Only numbers are allowed
-    expect(() => sinceKolmafiaRevision('20000')).toThrowError(TypeError);
+    expect(() => sinceKolmafiaRevision('20000')).to.throw(TypeError);
     // @ts-expect-error Only numbers are allowed
-    expect(() => sinceKolmafiaRevision(/20000/)).toThrowError(TypeError);
+    expect(() => sinceKolmafiaRevision(/20000/)).to.throw(TypeError);
     // @ts-expect-error Only numbers are allowed
-    expect(() => sinceKolmafiaRevision(undefined)).toThrowError(TypeError);
+    expect(() => sinceKolmafiaRevision(undefined)).to.throw(TypeError);
     // @ts-expect-error Only numbers are allowed
-    expect(() => sinceKolmafiaRevision(null)).toThrowError(TypeError);
+    expect(() => sinceKolmafiaRevision(null)).to.throw(TypeError);
     // @ts-expect-error Only numbers are allowed
-    expect(() => sinceKolmafiaRevision()).toThrowError(TypeError);
+    expect(() => sinceKolmafiaRevision()).to.throw(TypeError);
   });
 });
 
@@ -57,11 +58,11 @@ describe('sinceKolmafiaVersion()', () => {
   });
 
   it('Must disallow versions greater than the current version', () => {
-    expect(() => sinceKolmafiaVersion(15, 4)).toThrowError(
+    expect(() => sinceKolmafiaVersion(15, 4)).to.throw(
       KolmafiaVersionError,
       /requires version 15\.4.+15\.3/
     );
-    expect(() => sinceKolmafiaVersion(16, 0)).toThrowError(
+    expect(() => sinceKolmafiaVersion(16, 0)).to.throw(
       KolmafiaVersionError,
       /requires version 16\.0.+15\.3/
     );
@@ -69,27 +70,27 @@ describe('sinceKolmafiaVersion()', () => {
 
   it('Must disallow non-integers', () => {
     // Only integers are allowed
-    expect(() => sinceKolmafiaVersion(15.1, 0)).toThrowError(TypeError);
-    expect(() => sinceKolmafiaVersion(0, 15.1)).toThrowError(TypeError);
+    expect(() => sinceKolmafiaVersion(15.1, 0)).to.throw(TypeError);
+    expect(() => sinceKolmafiaVersion(0, 15.1)).to.throw(TypeError);
     // @ts-expect-error Only numbers are allowed
-    expect(() => sinceKolmafiaVersion('15', 0)).toThrowError(TypeError);
+    expect(() => sinceKolmafiaVersion('15', 0)).to.throw(TypeError);
     // @ts-expect-error Only numbers are allowed
-    expect(() => sinceKolmafiaVersion(0, '15')).toThrowError(TypeError);
+    expect(() => sinceKolmafiaVersion(0, '15')).to.throw(TypeError);
     // @ts-expect-error Only numbers are allowed
-    expect(() => sinceKolmafiaVersion(/15/, 0)).toThrowError(TypeError);
+    expect(() => sinceKolmafiaVersion(/15/, 0)).to.throw(TypeError);
     // @ts-expect-error Only numbers are allowed
-    expect(() => sinceKolmafiaVersion(0, /15/)).toThrowError(TypeError);
+    expect(() => sinceKolmafiaVersion(0, /15/)).to.throw(TypeError);
     // @ts-expect-error Only numbers are allowed
-    expect(() => sinceKolmafiaVersion(undefined, 0)).toThrowError(TypeError);
+    expect(() => sinceKolmafiaVersion(undefined, 0)).to.throw(TypeError);
     // @ts-expect-error Only numbers are allowed
-    expect(() => sinceKolmafiaVersion(0, undefined)).toThrowError(TypeError);
+    expect(() => sinceKolmafiaVersion(0, undefined)).to.throw(TypeError);
     // @ts-expect-error Only numbers are allowed
-    expect(() => sinceKolmafiaVersion(null, 0)).toThrowError(TypeError);
+    expect(() => sinceKolmafiaVersion(null, 0)).to.throw(TypeError);
     // @ts-expect-error Only numbers are allowed
-    expect(() => sinceKolmafiaVersion(0, null)).toThrowError(TypeError);
+    expect(() => sinceKolmafiaVersion(0, null)).to.throw(TypeError);
     // @ts-expect-error Only numbers are allowed
-    expect(() => sinceKolmafiaVersion(15)).toThrowError(TypeError);
+    expect(() => sinceKolmafiaVersion(15)).to.throw(TypeError);
     // @ts-expect-error Only numbers are allowed
-    expect(() => sinceKolmafiaVersion()).toThrowError(TypeError);
+    expect(() => sinceKolmafiaVersion()).to.throw(TypeError);
   });
 });

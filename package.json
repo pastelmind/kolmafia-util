@@ -6,13 +6,13 @@
   "module": "build/esm/src/index.js",
   "types": "build/src/index.d.ts",
   "scripts": {
-    "test": "jasmine",
     "lint": "gts lint",
     "clean": "gts clean",
     "compile": "tsc --build",
     "fix": "gts fix",
     "prepare": "npm run clean && npm run compile",
     "pretest": "npm run compile",
+    "test": "mocha",
     "posttest": "npm run lint"
   },
   "repository": {
@@ -29,10 +29,12 @@
   },
   "homepage": "https://github.com/pastelmind/kolmafia-util#readme",
   "devDependencies": {
-    "@types/jasmine": "^3.6.10",
+    "@types/chai": "^4.2.18",
+    "@types/mocha": "^8.2.2",
+    "chai": "^4.3.4",
     "gts": "^3.1.0",
-    "jasmine": "^3.7.0",
     "kolmafia": "npm:kolmafia-types@^0.1.0",
+    "mocha": "^8.4.0",
     "testdouble": "^3.16.1",
     "typescript": "^4.2.4"
   },
