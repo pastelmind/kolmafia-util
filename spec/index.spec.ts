@@ -1,6 +1,6 @@
-import mock = require('mock-require');
+import td = require('testdouble');
 
-mock('kolmafia', {
+td.replace('kolmafia', {
   getRevision: () => 20000,
   getVersion: () => 'KoLmafia v15.3',
 });
