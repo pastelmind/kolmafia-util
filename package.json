@@ -24,7 +24,6 @@
     "build/esm/src/**/*.js.map"
   ],
   "scripts": {
-    "pretest": "npm run compile",
     "test": "jasmine",
     "posttest": "npm run lint",
     "lint": "gts lint",
