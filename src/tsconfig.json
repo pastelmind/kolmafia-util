@@ -2,8 +2,11 @@
   "extends": "gts/tsconfig-google.json",
   "compilerOptions": {
     "module": "ES2015",
+    "moduleResolution": "Node",
+    "newLine": "lf",
     "noEmit": true,
     "outDir": "../build",
-    "target": "ES5"
+    // Rely on transpiler to generate Rhino-compatible code
+    "target": "ES2018"
   }
 }

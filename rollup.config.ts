@@ -1,4 +1,6 @@
+import buble from '@rollup/plugin-buble';
 import typescript from '@rollup/plugin-typescript';
+import createConfig from 'buble-config-rhino';
 import type {RollupOptions} from 'rollup';
 
 const baseConfig: RollupOptions = {
@@ -14,7 +16,10 @@ const config: RollupOptions[] = [
       format: 'cjs',
       sourcemap: true,
     },
-    plugins: [typescript({tsconfig: 'src/tsconfig.json'})],
+    plugins: [
+      buble(createConfig()),
+      typescript({tsconfig: 'src/tsconfig.json'}),
+    ],
   },
   {
     ...baseConfig,
@@ -23,7 +28,10 @@ const config: RollupOptions[] = [
       format: 'esm',
       sourcemap: true,
     },
-    plugins: [typescript({outDir: 'build/esm', tsconfig: 'src/tsconfig.json'})],
+    plugins: [
+      buble(createConfig()),
+      typescript({outDir: 'build/esm', tsconfig: 'src/tsconfig.json'}),
+    ],
   },
 ];
 
