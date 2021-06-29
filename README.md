@@ -4,7 +4,7 @@
 
 KoLmafia-util is a utility library for writing JavaScript/TypeScript programs that run inside KoLmafia.
 
-It provides some useful features in ASH that are not available in the JavaScript runtime.
+It provides some useful features for writing JavaScript-based KoLmafia projects.
 
 ## Installing
 
@@ -16,7 +16,7 @@ npm install kolmafia-util
 
 Support for `dependencies.txt` is coming soon.
 
-## Usage and API
+## Usage
 
 If you are using a bundler, you can import and use kolmafia-util like this:
 
@@ -25,6 +25,8 @@ import {sinceKolmafiaVersion} from 'kolmafia-util';
 
 sinceKolmafiaVersion(20, 7);
 ```
+
+## API
 
 The following is a list of functions and classes exported by kolmafia-util.
 
@@ -71,7 +73,7 @@ sinceKolmafiaVersion(20, 7);
 A custom error class used by `sinceKolmafiaRevision()` and `sinceKolmafiaVersion()`. You can use it with `instanceof` to manually handle version errors:
 
 ```ts
-import { KolmafiaVersionError, sinceKolmafiaVersion } from 'kolmafia-util';
+import {KolmafiaVersionError, sinceKolmafiaVersion} from 'kolmafia-util';
 
 try {
   sinceKolmafiaVersion(20, 7);
@@ -80,4 +82,49 @@ try {
     // Your own code
   }
 }
+```
+
+### `withDisabledFunctions()`
+
+Temporarily disable one or more ASH functions while executing a callback.
+
+```ts
+// Disables the userConfirm() function while executing the callback
+const someValue = withDisabledFunctions('user_confirm', () => {
+  /* ... */
+  return someValue;
+});
+```
+
+### `withFamiliar()`
+
+Temporarily changes the current familiar while executing a callback.
+
+```ts
+const someValue = withFamiliar(Familiar.get('Slimeling'), () => {
+  /* ... */
+  return someValue;
+});
+```
+
+### `withFamiliarIfOwned()`
+
+Temporarily changes the current familiar _only if you own it_ while executing a callback.
+
+```ts
+const someValue = withFamiliarIfOwned(Familiar.get('Slimeling'), () => {
+  /* ... */
+  return someValue;
+});
+```
+
+### `withOutfitCheckpoint()`
+
+Saves your current outfit using the `checkpoint` gCLI command, executes a callback, then restores the saved outfit.
+
+```ts
+const someValue = withOutfitCheckpoint(() => {
+  /* ... */
+  return someValue;
+});
 ```
