@@ -4,6 +4,8 @@
 
 import {getRevision, getVersion} from 'kolmafia';
 
+export * from './with';
+
 /**
  * Represents an exception thrown when the current KoLmafia version does not
  * match an expected condition.
