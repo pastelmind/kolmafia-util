@@ -1,0 +1,9 @@
+{
+  "extends": "gts/tsconfig-google.json",
+  "compilerOptions": {
+    "module": "ES2015",
+    "noEmit": true,
+    "outDir": "../build",
+    "target": "ES5"
+  }
+}
