@@ -28,7 +28,8 @@
     "lint": "gts lint",
     "clean": "gts clean",
     "fix": "gts fix",
-    "prepare": "husky install && npm run clean && npm run build"
+    "prepare": "husky install && npm run clean && npm run build",
+    "release": "standard-version"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
@@ -43,6 +44,7 @@
     "jasmine": "^3.7.0",
     "kolmafia": "npm:kolmafia-types@^0.1.0",
     "rollup": "^2.52.3",
+    "standard-version": "^9.3.0",
     "testdouble": "^3.16.1",
     "ts-node": "^10.0.0",
     "typescript": "^4.2.4"
