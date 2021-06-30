@@ -1,11 +1,18 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+### [0.1.3](https://github.com/pastelmind/kolmafia-util/compare/v0.1.2...v0.1.3) (2021-06-30)
 
-## [Unreleased]
+
+### Features
+
+* Add context manager functions ([8471323](https://github.com/pastelmind/kolmafia-util/commit/8471323e574241d7106b2d83a471fd60e1d24305))
+
+
+### Bug Fixes
+
+* Add `skipLibCheck` to tsconfig ([a4095c1](https://github.com/pastelmind/kolmafia-util/commit/a4095c14c23225a3158b706a5b7c75f3dfb4ad20))
 
 ## [0.1.2] - 2021-01-21
 
