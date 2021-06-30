@@ -28,14 +28,18 @@
     "lint": "gts lint",
     "clean": "gts clean",
     "fix": "gts fix",
-    "prepare": "npm run clean && npm run build"
+    "prepare": "husky install && npm run clean && npm run build"
   },
   "devDependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "@commitlint/types": "^12.1.4",
     "@rollup/plugin-buble": "^0.21.3",
     "@rollup/plugin-typescript": "^8.2.1",
     "@types/jasmine": "^3.6.10",
     "buble-config-rhino": "^0.1.0",
     "gts": "^3.1.0",
+    "husky": "^6.0.0",
     "jasmine": "^3.7.0",
     "kolmafia": "npm:kolmafia-types@^0.1.0",
     "rollup": "^2.52.3",
