@@ -65,6 +65,9 @@ export function withFamiliar<T>(familiar: Familiar, callback: () => T): T {
 /**
  * Temporarily changes the current familiar _only if you own it_ while executing
  * a callback.
+ *
+ * Note: This will always restore your original familiar, even if the switched
+ * `familiar` is `none`, or if you don't own it.
  * @param familiar Familiar to use. If you do not own this familiar, the
  *    callback will be executed without changing the current familiar.
  *    If this is `none`, this function will always change the current familiar
@@ -76,9 +79,10 @@ export function withFamiliarIfOwned<T>(
   familiar: Familiar,
   callback: () => T
 ): T {
-  return haveFamiliar(familiar) || familiar === Familiar.get('none')
-    ? withFamiliar(familiar, callback)
-    : callback();
+  return withFamiliar(
+    haveFamiliar(familiar) ? familiar : myFamiliar(),
+    callback
+  );
 }
 
 /**
