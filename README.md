@@ -128,3 +128,86 @@ const someValue = withOutfitCheckpoint(() => {
   return someValue;
 });
 ```
+
+### Assertion Library
+
+kolmafia-util exports a rudimentary assertion library. To import it, use:
+
+```ts
+import * as assert from 'kolmafia-util/assert';
+
+assert.ok(someValue());
+```
+
+Note that the assertion library do not rely on KoLmafia's library functions. This makes them runnable in almost any JavaScript environment.
+
+### `ok(cond, [message])`
+
+Asserts that a condition is truthy. This also acts as a TypeScript type assertion, and can participate in type narrowing.
+
+```ts
+const a: string | null = getSomething();
+assert.ok(a, 'a is falsy');
+// This works because assert.ok() narrows the type of a to a string.
+const b = a.toLowerCase();
+```
+
+### `fail([message])`
+
+Throws an error, optionally with the given message.
+
+```ts
+assert.fail('This should be unreachable');
+```
+
+### `equal(actual, expected, [message])`
+
+Asserts that `actual` is strictly equal (`===`) to `expected`.
+
+```ts
+assert.equal(someValue(), 'FOO');
+```
+
+### `notEqual(actual, expected, [message])`
+
+Asserts that `actual` is strictly inequal (`!==`) to `expected`.
+
+```ts
+assert.notEqual(someValue(), null);
+```
+
+### `isAtLeast(actual, expected, [message])`
+
+Asserts that `actual` is greater than or equal (`>=`) to `expected`.
+
+```ts
+assert.isAtLeast(someValue(), 50);
+```
+
+### `isAtMost(actual, expected, [message])`
+
+Asserts that `actual` is less than or equal (`>=`) to `expected`.
+
+```ts
+assert.isAtMost(someValue(), 50);
+```
+
+### `isAbove(actual, expected, [message])`
+
+Asserts that `actual` is greater than (`>`) `expected`.
+
+```ts
+assert.isAbove(someValue(), 50);
+```
+
+### `isBelow(actual, expected, [message])`
+
+Asserts that `actual` is less than (`<`) `expected`.
+
+```ts
+assert.isBelow(someValue(), 50);
+```
+
+### `AssertionError`
+
+An error class that is thrown by the assertion functions.
