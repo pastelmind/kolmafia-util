@@ -15,9 +15,9 @@
   },
   "license": "MIT",
   "author": "Ye-hyoung Kang",
-  "main": "build/index.js",
+  "main": "build/cjs/index.js",
   "module": "build/esm/index.js",
-  "types": "build/index.d.ts",
+  "types": "build/esm/index.d.ts",
   "files": [
     "build"
   ],
