@@ -15,9 +15,26 @@
   },
   "license": "MIT",
   "author": "Ye-hyoung Kang",
-  "main": "build/cjs/index.js",
-  "module": "build/esm/index.js",
-  "types": "build/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./build/esm/index.js",
+      "require": "./build/cjs/index.js"
+    },
+    "./assert": {
+      "import": "./build/esm/assert/index.js",
+      "require": "./build/cjs/assert/index.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "assert": [
+        "build/esm/assert/index.d.ts"
+      ],
+      "*": [
+        "build/esm/*"
+      ]
+    }
+  },
   "files": [
     "build"
   ],
@@ -38,6 +55,7 @@
     "@rollup/plugin-buble": "^0.21.3",
     "@rollup/plugin-typescript": "^8.2.1",
     "@types/jasmine": "^3.6.10",
+    "@types/node": "^12.20.16",
     "buble-config-rhino": "^0.1.0",
     "gts": "^3.1.0",
     "husky": "^6.0.0",
@@ -49,5 +67,8 @@
     "ts-node": "^10.0.0",
     "tslib": "^2.3.0",
     "typescript": "^4.2.4"
+  },
+  "engines": {
+    "node": ">= 12.16.0 || >= 13.7.0"
   }
 }
