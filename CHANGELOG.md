@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/pastelmind/kolmafia-util/compare/v0.1.3...v0.2.0) (2021-07-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* To export two entrypoints, use the `exports` and `typesVersions` fields
+in `package.json`. This requires Node.js >= 12.16.0 || >= 13.7.0.
+
+### Features
+
+* add assert submodule ([7c5354d](https://github.com/pastelmind/kolmafia-util/commit/7c5354d842da11ef42e979660c8cec58fb721eb5))
+
+
+### Bug Fixes
+
+* withFamiliarIfOwned() always restores the original familiar ([865b6da](https://github.com/pastelmind/kolmafia-util/commit/865b6da75d6db0d3318cc04bea9b30000b9fc4ff))
+
 ### [0.1.3](https://github.com/pastelmind/kolmafia-util/compare/v0.1.2...v0.1.3) (2021-06-30)
 
 
