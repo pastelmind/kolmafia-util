@@ -129,6 +129,77 @@ const someValue = withOutfitCheckpoint(() => {
 });
 ```
 
+### Sending messages, items, and meat to other players
+
+#### `kmail(options)`
+
+Sends a Kmail to another player. The `options` object supports the following fields:
+
+- `recipent`: Target player ID or username
+- `message`: (_optional_) Message text
+- `meat`: (_optional_) Amount of meat to send
+- `items`: (_optional_) A [Map] which maps `Item`s to send to their quantities. If more than 11 items are given, this function will attempt to send multiple Kmail messages.
+
+This throws a `KmailError` upon failure.
+
+```ts
+kmail({
+  recipent: 'sellbot',
+  items: new Map([
+    [Item.get('pail'), 5],
+    [Item.get('seal tooth'), 1],
+  ]),
+});
+```
+
+#### `sendGift(options)`
+
+Sends a gift message to another player. The `options` object supports the following fields:
+
+- `recipent`: Target player ID or username
+- `message`: (_optional_) Message text
+- `meat`: (_optional_) Amount of meat to send, not including the cost of gift boxes themselves
+- `items`: (_optional_) A [Map] which maps `Item`s to send to their quantities. Multiple items will be sent in separate packages.
+- `insideNote`: (_optional_) Message to put inside the gift box
+- `useStorage`: (_optional_) If truthy, will send meat and items from [Hagnk's] instead of your inventory
+
+This will always use the [plain brown wrapper](https://kol.coldfront.net/thekolwiki/index.php/Plain_brown_wrapper) or the [less-than-three-shaped-box](https://kol.coldfront.net/thekolwiki/index.php/Less-than-three-shaped_box) to minimize the cost of packaging. Take care not to hit the daily limit of 100 gift boxes.
+
+This throws a `GiftError` upon failure.
+
+```ts
+sendGift({
+  recipent: 'sellbot',
+  message: 'Hi there!',
+  insideNote: 'With <3',
+  meat: 100000,
+  useStorage: true,
+});
+```
+
+#### `sendToPlayer(options)`
+
+Sends Kmail messages and gifts to another player. This combines `kmail()` and `sendGift()` into a single function call, intelligently deciding how to send each item.
+
+The `options` object supports the following fields:
+
+- `recipent`: Target player ID or username
+- `message`: (_optional_) Message text
+- `meat`: (_optional_) Amount of meat to send, not including the cost of gift boxes themselves
+- `items`: (_optional_) A [Map] which maps `Item`s to send to their quantities.
+- `insideNote`: (_optional_) Message to put inside the gift box
+- `useStorage`: (_optional_) If truthy, will send meat and items from [Hagnk's] instead of your inventory
+
+This cannot send meat and items in [Hagnk's]. To do so, use [`sendGift()`](#sendgiftoptions) instead.
+
+#### `KmailError`
+
+A custom error class thrown when sending a Kmail fails.
+
+#### `GiftError`
+
+A custom error class thrown when sending a Kmail fails.
+
 ### Assertion Library
 
 kolmafia-util exports a rudimentary assertion library. To import it, use:
@@ -211,3 +282,6 @@ assert.isBelow(someValue(), 50);
 #### `AssertionError`
 
 An error class that is thrown by the assertion functions.
+
+[map]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map
+[hagnk's]: https://kol.coldfront.net/thekolwiki/index.php/Hagnk%27s_Ancestral_Mini-Storage
