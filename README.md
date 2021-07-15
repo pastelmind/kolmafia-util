@@ -141,7 +141,7 @@ assert.ok(someValue());
 
 Note that the assertion library do not rely on KoLmafia's library functions. This makes them runnable in almost any JavaScript environment.
 
-### `ok(cond, [message])`
+#### `ok(cond, [message])`
 
 Asserts that a condition is truthy. This also acts as a TypeScript type assertion, and can participate in type narrowing.
 
@@ -152,7 +152,7 @@ assert.ok(a, 'a is falsy');
 const b = a.toLowerCase();
 ```
 
-### `fail([message])`
+#### `fail([message])`
 
 Throws an error, optionally with the given message.
 
@@ -160,7 +160,7 @@ Throws an error, optionally with the given message.
 assert.fail('This should be unreachable');
 ```
 
-### `equal(actual, expected, [message])`
+#### `equal(actual, expected, [message])`
 
 Asserts that `actual` is strictly equal (`===`) to `expected`.
 
@@ -168,7 +168,7 @@ Asserts that `actual` is strictly equal (`===`) to `expected`.
 assert.equal(someValue(), 'FOO');
 ```
 
-### `notEqual(actual, expected, [message])`
+#### `notEqual(actual, expected, [message])`
 
 Asserts that `actual` is strictly inequal (`!==`) to `expected`.
 
@@ -176,7 +176,7 @@ Asserts that `actual` is strictly inequal (`!==`) to `expected`.
 assert.notEqual(someValue(), null);
 ```
 
-### `isAtLeast(actual, expected, [message])`
+#### `isAtLeast(actual, expected, [message])`
 
 Asserts that `actual` is greater than or equal (`>=`) to `expected`.
 
@@ -184,7 +184,7 @@ Asserts that `actual` is greater than or equal (`>=`) to `expected`.
 assert.isAtLeast(someValue(), 50);
 ```
 
-### `isAtMost(actual, expected, [message])`
+#### `isAtMost(actual, expected, [message])`
 
 Asserts that `actual` is less than or equal (`>=`) to `expected`.
 
@@ -192,7 +192,7 @@ Asserts that `actual` is less than or equal (`>=`) to `expected`.
 assert.isAtMost(someValue(), 50);
 ```
 
-### `isAbove(actual, expected, [message])`
+#### `isAbove(actual, expected, [message])`
 
 Asserts that `actual` is greater than (`>`) `expected`.
 
@@ -200,7 +200,7 @@ Asserts that `actual` is greater than (`>`) `expected`.
 assert.isAbove(someValue(), 50);
 ```
 
-### `isBelow(actual, expected, [message])`
+#### `isBelow(actual, expected, [message])`
 
 Asserts that `actual` is less than (`<`) `expected`.
 
@@ -208,6 +208,6 @@ Asserts that `actual` is less than (`<`) `expected`.
 assert.isBelow(someValue(), 50);
 ```
 
-### `AssertionError`
+#### `AssertionError`
 
 An error class that is thrown by the assertion functions.
