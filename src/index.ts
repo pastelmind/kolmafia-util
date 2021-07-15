@@ -4,6 +4,7 @@
 
 import {getRevision, getVersion} from 'kolmafia';
 
+export * from './kmail';
 export * from './with';
 
 /**
