@@ -322,6 +322,8 @@ export function sendToPlayer({
   } catch (error) {
     if (error instanceof RecipentRestrictedError) {
       giftItems = items as Map<Item, number>;
+    } else {
+      throw error;
     }
   }
 
