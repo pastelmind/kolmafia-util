@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](https://github.com/pastelmind/kolmafia-util/compare/v0.2.0...v0.2.1) (2021-07-16)
+
+
+### Features
+
+* add kmail & gift functions ([054aebd](https://github.com/pastelmind/kolmafia-util/commit/054aebd6ce1a1e6d00fa5cf784208897cc38ec19))
+
 ## [0.2.0](https://github.com/pastelmind/kolmafia-util/compare/v0.1.3...v0.2.0) (2021-07-12)
 
 
