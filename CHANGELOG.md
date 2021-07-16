@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.2](https://github.com/pastelmind/kolmafia-util/compare/v0.2.1...v0.2.2) (2021-07-16)
+
+
+### Bug Fixes
+
+* prevent `sendToPlayer()` from swallowing all exceptions ([2519b41](https://github.com/pastelmind/kolmafia-util/commit/2519b410a96625232d86e2e6b36e9496e6b25769))
+
 ### [0.2.1](https://github.com/pastelmind/kolmafia-util/compare/v0.2.0...v0.2.1) (2021-07-16)
 
 
