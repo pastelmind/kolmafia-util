@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/pastelmind/kolmafia-util/compare/v0.2.2...v0.3.0) (2021-07-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* export `assert` as single namespace object
+
+### Features
+
+* add `notifyProjectMaintainer()` ([a02ba06](https://github.com/pastelmind/kolmafia-util/commit/a02ba06b00033e6d051af22c3b44db70b932bed4))
+* export `assert` as single namespace object ([28de966](https://github.com/pastelmind/kolmafia-util/commit/28de966b941d8ba59f3c0b85b5b43e1095dc087d))
+
 ### [0.2.2](https://github.com/pastelmind/kolmafia-util/compare/v0.2.1...v0.2.2) (2021-07-16)
 
 
