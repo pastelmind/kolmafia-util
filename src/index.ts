@@ -2,7 +2,14 @@
  * @file Utilities for writing JavaScript code that runs in KoLmafia.
  */
 
-import {getRevision, getVersion} from 'kolmafia';
+import {
+  getProperty,
+  getRevision,
+  getVersion,
+  print,
+  setProperty,
+} from 'kolmafia';
+import {kmail} from './kmail';
 
 export * as assert from './assert';
 export * from './kmail';
@@ -113,5 +120,61 @@ export function sinceKolmafiaVersion(
     throw new KolmafiaVersionError(
       `${getScriptName()} requires version ${majorVersion}.${minorVersion} of kolmafia or higher (current: ${currentMajorVersion}.${currentMinorVersion}). Up-to-date builds can be found at https://ci.kolmafia.us/.`
     );
+  }
+}
+
+/**
+ * Sends a Kmail to another player (usually the project maintainer) to
+ * acknowledge that the current player is using the project.
+ * This will send a message only once for the same "main" script.
+ *
+ * **This must be called inside the `main()` function of your script.**
+ * Otherwise, it may fail to send a message.
+ *
+ * This behaves like the `script <name>;` and `notify <player>;` statements in
+ * ASH, combined into a single function call.
+ * @param projectName Name of the project, used in the Kmail message
+ * @param username Player username
+ */
+export function notifyProjectMaintainer(
+  projectName: string,
+  username: string
+): void {
+  if (require.main === undefined) {
+    throw new Error(
+      'require.main is undefined.' +
+        '\nnotifyProjectMaintainer() must be called inside the main() function.'
+    );
+  }
+
+  const match = /^file:(\/.+\.[Jj][Ss])$/.exec(require.main.id);
+  if (!match) {
+    throw new Error(
+      `Cannot determine the entrypoint script file for <${projectName}>.` +
+        `\n(require.main.id === \`${require.main.id}\`)`
+    );
+  }
+  const scriptFileToken = `<${match[1]}>`;
+
+  if (!projectName) {
+    throw new Error(
+      `Missing script name. Report the problem to the project maintainer (${username}).`
+    );
+  }
+  if (!username) {
+    throw new Error(
+      `Missing username for <${projectName}>. Report the problem to the project maintainer.`
+    );
+  }
+
+  const NOTIFY_LIST_PROPERTY = 'previousNotifyList';
+  const oldNotifyList = getProperty(NOTIFY_LIST_PROPERTY, true);
+  if (!oldNotifyList.includes(scriptFileToken)) {
+    print(`${projectName}: Notifying ${username}...`);
+    kmail({
+      recipent: username,
+      message: `I have chosen to run <${projectName}>. Thank you for maintaining this project!`,
+    });
+    setProperty(NOTIFY_LIST_PROPERTY, oldNotifyList + scriptFileToken);
   }
 }
