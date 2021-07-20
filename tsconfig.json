@@ -5,7 +5,10 @@
     // Don't generate d.ts files for the Rollup config
     "noEmit": true,
     // Accessed by `gts clean`
-    "outDir": "build"
+    "outDir": "build",
+    "paths": {
+      "kolmafia": ["./node_modules/kolmafia-types"]
+    }
   },
   "exclude": ["spec", "src"]
 }

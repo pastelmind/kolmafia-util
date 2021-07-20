@@ -6,6 +6,9 @@
     "newLine": "lf",
     "noEmit": true,
     "outDir": "../build",
+    "paths": {
+      "kolmafia": ["../node_modules/kolmafia-types"]
+    },
     // Rely on transpiler to generate Rhino-compatible code
     "target": "ES2018"
   }
