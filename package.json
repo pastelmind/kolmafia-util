@@ -19,22 +19,9 @@
     ".": {
       "import": "./build/esm/index.js",
       "require": "./build/cjs/index.js"
-    },
-    "./assert": {
-      "import": "./build/esm/assert/index.js",
-      "require": "./build/cjs/assert/index.js"
     }
   },
-  "typesVersions": {
-    "*": {
-      "assert": [
-        "build/esm/assert/index.d.ts"
-      ],
-      "*": [
-        "build/esm/*"
-      ]
-    }
-  },
+  "types": "build/esm/index.d.ts",
   "files": [
     "build"
   ],
