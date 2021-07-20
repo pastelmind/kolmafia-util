@@ -30,6 +30,26 @@ sinceKolmafiaVersion(20, 7);
 
 The following is a list of functions and classes exported by kolmafia-util.
 
+### `notifyProjectMaintainer()`
+
+```ts
+function notifyProjectMaintainer(projectName: string, username: string): void;
+```
+
+This function combines the functionality of the `script <name>` and `notify <player>` statements in ASH. When executed, it sends a Kmail to the author (`username`) to notify them that you are using the project (`projectName`).
+
+This function must be called inside the `main()` function:
+
+```ts
+// Bad
+notifyProjectMaintainer('MyProject', 'SomePlayer123');
+
+// OK
+exports.main = function main() {
+  notifyProjectMaintainer('MyProject', 'SomePlayer123');
+};
+```
+
 ### `sinceKolmafiaRevision()`
 
 ```ts
