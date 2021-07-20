@@ -4,6 +4,7 @@
 
 import {getRevision, getVersion} from 'kolmafia';
 
+export * as assert from './assert';
 export * from './kmail';
 export * from './with';
 
